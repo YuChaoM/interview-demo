@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuchao.interviewdemo.mapper.WalletTransactionMapper">
+    <sql id="insertField">
+        user_id
+        ,transaction_type,amount,balance,created_time
+    </sql>
+
+    <sql id="selectField">
+        id
+        ,user_id,transaction_type,amount,balance,created_time
+    </sql>
+
+    <insert id="insertWalletTransaction" keyProperty="id" parameterType="walletTransaction">
+        insert into wallet_transaction(<include refid="insertField"></include>)
+        values(#{userId},#{transactionType},#{amount},#{balance},#{createdTime})
+    </insert>
+
+    <select id="selectWalletTransactionByDate" resultType="walletTransaction">
+        select <include refid="selectField"></include>
+        from wallet_transaction
+        where user_id = #{userId}
+        and created_time between #{startTime} and #{endTime}
+    </select>
+
+</mapper>
