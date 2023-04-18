@@ -19,9 +19,13 @@
     </insert>
 
     <select id="selectWalletTransactionByDate" resultType="walletTransaction">
-        select <include refid="selectField"></include>
+        select
+        <include refid="selectField"></include>
         from wallet_transaction
         where user_id = #{userId}
+        <if test="type != null">
+            and transaction_type = #{type}
+        </if>
         and created_time between #{startTime} and #{endTime}
     </select>
 

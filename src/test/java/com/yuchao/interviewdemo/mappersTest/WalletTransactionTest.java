@@ -2,10 +2,8 @@ package com.yuchao.interviewdemo.mappersTest;
 
 import com.yuchao.interviewdemo.entity.WalletTransaction;
 import com.yuchao.interviewdemo.mapper.WalletTransactionMapper;
-import com.yuchao.interviewdemo.util.WalletTransactionConstant;
-import javafx.print.PageOrientation;
+import com.yuchao.interviewdemo.util.Constants;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
@@ -20,7 +18,7 @@ import java.util.List;
  * @create 2023-04-18  14:52
  */
 @SpringBootTest
-public class WalletTransactionTest implements WalletTransactionConstant {
+public class WalletTransactionTest implements Constants {
 
     @Resource
     private WalletTransactionMapper walletTransactionMapper;
@@ -49,9 +47,13 @@ public class WalletTransactionTest implements WalletTransactionConstant {
         Date startTime = sdf.parse("2023-04-10 15:16:54");
         Date endTime = sdf.parse("2023-04-18 15:16:55");
 
-        List<WalletTransaction> list = walletTransactionMapper.selectWalletTransactionByDate(1005l, startTime, endTime);
+        List<WalletTransaction> list = walletTransactionMapper.selectWalletTransactionByDate(1005l, null, startTime, endTime);
         for (WalletTransaction walletTransaction : list) {
             System.out.println(walletTransaction);
+        }
+        List<WalletTransaction> list2 = walletTransactionMapper.selectWalletTransactionByDate(1005l, "充值", startTime, endTime);
+        for (WalletTransaction t : list2) {
+            System.out.println(t);
         }
     }
 

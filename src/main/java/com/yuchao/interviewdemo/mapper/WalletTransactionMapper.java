@@ -2,7 +2,6 @@ package com.yuchao.interviewdemo.mapper;
 
 import com.yuchao.interviewdemo.entity.WalletTransaction;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 import java.util.List;
@@ -15,5 +14,5 @@ public interface WalletTransactionMapper {
 
     int insertWalletTransaction(WalletTransaction walletTransaction);
 
-    List<WalletTransaction> selectWalletTransactionByDate(@Param("userId") Long userId,@Param("startTime") Date startTime, @Param("endTime") Date endTime);
+    List<WalletTransaction> selectWalletTransactionByDate(@Param("userId") Long userId, @Param("type")String type, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }
