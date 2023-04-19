@@ -29,4 +29,15 @@
         and created_time between #{startTime} and #{endTime}
     </select>
 
+    <update id="updateWalletTransactionStatus">
+        update wallet_transaction set status = #{status}
+        where Id = #{id} and user_id = #{userId}
+    </update>
+    <select id="selectWalletTransactionByStatus" resultType="WalletTransaction">
+        select
+        <include refid="selectField"></include>
+        from wallet_transaction
+        where transaction_type = #{type} and status = #{status}
+    </select>
+
 </mapper>

@@ -11,6 +11,11 @@ public interface Constants {
     String PURCHASE = "消费";
     String REFUND = "退款";
 
+    int PENDING = 1; // 待处理
+
+    int APPROVED = 2; // 以批准
+
+    int REJECTED = 3; // 已拒绝
 
     String CODE_200 = "200";//成功
 

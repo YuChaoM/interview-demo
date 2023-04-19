@@ -17,19 +17,15 @@ public class WalletTransaction {
 
     private BigDecimal balance;
 
+    private int status;
+
+    private Date expired;
+
     private Date createdTime;
 
     public WalletTransaction() {
     }
 
-    public WalletTransaction(Long id, Long userId, String transactionType, BigDecimal amount, BigDecimal balance, Date createdTime) {
-        this.id = id;
-        this.userId = userId;
-        this.transactionType = transactionType;
-        this.amount = amount;
-        this.balance = balance;
-        this.createdTime = createdTime;
-    }
 
     public Long getId() {
         return id;
@@ -79,6 +75,22 @@ public class WalletTransaction {
         this.createdTime = createdTime;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Date getExpired() {
+        return expired;
+    }
+
+    public void setExpired(Date expired) {
+        this.expired = expired;
+    }
+
     @Override
     public String toString() {
         return "WalletTransaction{" +
@@ -87,6 +99,8 @@ public class WalletTransaction {
                 ", transactionType='" + transactionType + '\'' +
                 ", amount=" + amount +
                 ", balance=" + balance +
+                ", status=" + status +
+                ", expired=" + expired +
                 ", createdTime=" + createdTime +
                 '}';
     }

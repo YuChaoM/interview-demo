@@ -15,4 +15,10 @@ public interface WalletTransactionMapper {
     int insertWalletTransaction(WalletTransaction walletTransaction);
 
     List<WalletTransaction> selectWalletTransactionByDate(@Param("userId") Long userId, @Param("type")String type, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    // 更新状态
+    void updateWalletTransactionStatus(@Param("Id") Long Id,@Param("userId") Long userId,@Param("status") int status);
+
+    // 根据类型和状态查询交易记录
+    List<WalletTransaction> selectWalletTransactionByStatus(@Param("type")String type, @Param("status") int status);
 }
